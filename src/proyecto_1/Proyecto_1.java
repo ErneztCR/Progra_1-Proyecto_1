@@ -77,7 +77,6 @@ public class Proyecto_1 {
 
     static void SubmenuReportes() {
         int opcion = 0;
-        Scanner scanner = new Scanner(System.in);
 
         while (opcion != 3) {
             System.out.println(" ");
@@ -296,12 +295,10 @@ public class Proyecto_1 {
     static void reporteTodosLosDatos() {
         System.out.println(" ");
         System.out.println(String.format("%50s", "REPORTE DE ESTUDIANTES"));
-        System.out
-                .println("==========================================================================================");
+        System.out.println("==========================================================================================");
         System.out.println(
-                String.format("%-8s %-24s %-24s %-16s %-16s", "Cedula", "Nombre", "Apellido", "Promedio", "Condicion"));
-        System.out
-                .println("==========================================================================================");
+        String.format("%-8s %-24s %-24s %-16s %-16s", "Cedula", "Nombre", "Apellido", "Promedio", "Condicion"));
+        System.out.println("==========================================================================================");
 
         double promedioMayor = 0;
         double promedioMenor = 0; // inicializamos con el primer promedio
@@ -339,17 +336,11 @@ public class Proyecto_1 {
                 }
             }
 
-            System.out
-                    .println("==========================================================================================");
-
-            System.out.println(
-                    "------------------------------------------------------------------------------------------");
+            System.out.println("==========================================================================================");
             System.out.println(" ");
 
-            System.out.println(
-                    "Promedio Mayor: " + promedioMayor + " (estudiante: " + nombreEstudianteMayorPromedio + ")");
-            System.out.println(
-                    "Promedio Menor: " + promedioMenor + " (estudiante: " + nombreEstudianteMenorPromedio + ")");
+            System.out.println("Nota Mayor: " + promedioMayor + " (estudiante: " + nombreEstudianteMayorPromedio + ")");
+            System.out.println("Nota Menor: " + promedioMenor + " (estudiante: " + nombreEstudianteMenorPromedio + ")");
             System.out.println("Cantidad de estudiantes aprobados: " + numEstudiantesAprobados);
             System.out.println("Cantidad de estudiantes aplazados: " + numEstudiantesAplazados);
             System.out.println("Cantidad de estudiantes reprobados: " + numEstudiantesReprobados);
