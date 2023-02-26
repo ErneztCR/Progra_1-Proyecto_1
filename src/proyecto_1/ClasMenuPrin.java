@@ -27,7 +27,7 @@ public class ClasMenuPrin {
             // Validar entrada para que sea un número del 1 al 7
             String input = scanner.nextLine();
             while (!input.matches("[1-7]") || !Character.isDigit(input.charAt(0))) {
-                System.out.println("\n Opcion invalida.\n \n Digite el numero de la opcion que desea: ");
+                System.out.print("\n Opcion invalida.\n \n Digite el numero de la opcion que desea: ");
                 input = scanner.nextLine();
             }
             opcion = Integer.parseInt(input);
@@ -56,7 +56,7 @@ public class ClasMenuPrin {
                     System.out.println("\nGracias por utilizar el programa.\n");
                     break;
                 default:
-                    System.out.println("\nOpcion invalida. \nDigite el numero de la opcion que desea: ");
+                    System.out.print("\nOpcion invalida. \nDigite el numero de la opcion que desea: ");
             }
         }
         scanner.close();

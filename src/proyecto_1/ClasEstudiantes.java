@@ -24,7 +24,7 @@ public class ClasEstudiantes {
             // Validar entrada para que sea un número del 1 al 3
             String input = scanner.nextLine();
             while (!input.matches("[1-3]") || !Character.isDigit(input.charAt(0))) {
-                System.out.println("\n Opcion invalida. \n Digite el numero de la opcion que desea: ");
+                System.out.print("\n Opcion invalida. \n Digite el numero de la opcion que desea: ");
                 input = scanner.nextLine();
             }
 
