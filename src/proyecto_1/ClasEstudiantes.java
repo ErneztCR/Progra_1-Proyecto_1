@@ -11,25 +11,24 @@ public class ClasEstudiantes {
     static double[] notaEstudiantes = new double[10];
     static int numEstudiantes = 0;
 
-    static void SubmenuReportes() {
+  static void SubmenuReportes() {
         int opcion = 0;
         Scanner scanner = new Scanner(System.in);
         while (opcion != 3) {
             System.out.println("\n-------Submenu Reportes-------\n");
             System.out.println("1. Reporte Estudiantes por Condicion.");
             System.out.println("2. Reporte Todos los datos.");
-            System.out.println("3. Regresar Menu Principal.\n");
-            System.out.print("\n Seleccione una opcion:\n");
+            System.out.println("3. Regresar Menu Principal.");
+            System.out.print("Seleccione una opcion:");
+             // Validar entrada para que sea un número del 1 al 3
+             String input = scanner.nextLine();
+        while (!input.matches("[1-3]") || !Character.isDigit(input.charAt(0))) {
+            System.out.println("La opcion marcada es invalida.");
+            input = scanner.nextLine();
+        }
 
-            // Validar entrada para que sea un número del 1 al 3
-            String input = scanner.nextLine();
-            while (!input.matches("[1-3]") || !Character.isDigit(input.charAt(0))) {
-                System.out.print("\n Opcion invalida. \n Digite el numero de la opcion que desea: ");
-                input = scanner.nextLine();
-            }
-
-            opcion = Integer.parseInt(input);
-
+        opcion = Integer.parseInt(input);
+            
             switch (opcion) {
                 case 1:
                     reporteEstudiantesPorCondicion();
@@ -40,11 +39,12 @@ public class ClasEstudiantes {
                 case 3:
                     return;
                 default:
-                    System.out.println("\n Opcion invalida.  \n Digite el numero de la opcion que desea: ");
+                    
+                    System.out.println("La opcion marcada es invalida.");
             }
         }
         scanner.close();
-    }
+}
 
     static void inicializarVec() {
         for (int i = 0; i < 10; i++) {
@@ -53,27 +53,23 @@ public class ClasEstudiantes {
             notaEstudiantes[i] = 0.0;
         }
         numEstudiantes = 0;
-        System.out.println(" ");
-        System.out.println("\nVectores inicializados correctamente.\n");
-        System.out.println(" ");
+        System.out.println("\n Vectores inicializados correctamente.\n"); 
     }
 
     static void IncluirEstud() {
-
+       
         if (numEstudiantes >= 10) {
-
-            System.out.println("\n No se pueden incluir mas estudiantes.\n");
-
+            System.out.println("No se pueden incluir mas estudiantes.");
             return;
         }
 
-        System.out.print("\n Ingrese la cedula del estudiante: ");
+        System.out.print("Ingrese la cedula del estudiante: ");
         String cedula = sc.next();
-        System.out.print("\n Ingrese el nombre del estudiante: ");
+        System.out.print("Ingrese el nombre del estudiante: ");
         String nombre = sc.next();
-        System.out.print("\n Ingrese el apellido del estudiante: ");
+        System.out.print("Ingrese el apellido del estudiante: ");
         String apellido = sc.next();
-        System.out.print("\n Ingrese la nota del estudiante: ");
+        System.out.print("Ingrese la nota del estudiante: ");
         double nota = sc.nextDouble();
 
         cedulaEstudiantes[numEstudiantes] = cedula;
@@ -81,58 +77,50 @@ public class ClasEstudiantes {
         apellidoEstudiantes[numEstudiantes] = apellido;
         notaEstudiantes[numEstudiantes] = nota;
         numEstudiantes++;
-
         System.out.println("\n Estudiante incluido correctamente.\n");
-
     }
 
     static void ConsultarEstud() {
-
+        
         System.out.println("\n-------Consultar Estudiantes-------\n");
-
+       
         for (int i = 0; i < numEstudiantes; i++) {
             System.out.println("Cedula: " + cedulaEstudiantes[i]);
             System.out.println("Nombre: " + nombreEstudiantes[i]);
             System.out.println("Apellido: " + apellidoEstudiantes[i]);
             System.out.println("Nota: " + notaEstudiantes[i]);
-            System.out.println("\n-------------------------\n");
-
+            System.out.println("-------------------------");
         }
     }
 
     static void ModificarEstud() {
-
-        System.out.print("\n Ingrese la cedula del estudiante a modificar: ");
+        
+        System.out.print("Ingrese la cedula del estudiante a modificar: ");
         String cedula = sc.next();
 
         for (int i = 0; i < numEstudiantes; i++) {
             if (cedulaEstudiantes[i].equals(cedula)) {
-
-                System.out.print("\n Ingrese el nuevo nombre del estudiante:");
+                
+                System.out.print(" Ingrese el nuevo nombre del estudiante: ");
                 String nombre = sc.next();
-                System.out.print("\n Ingrese el nuevo apellido del estudiante:");
+                System.out.print("Ingrese el nuevo apellido del estudiante: ");
                 String apellido = sc.next();
-                System.out.print("\n Ingrese la nueva nota del estudiante:");
+                System.out.print("Ingrese la nueva nota del estudiante: ");
                 double nota = sc.nextDouble();
-
                 nombreEstudiantes[i] = nombre;
                 apellidoEstudiantes[i] = apellido;
                 notaEstudiantes[i] = nota;
 
-                System.out.println("\n Estudiante modificado correctamente.\n");
-
+                System.out.println("\n Estudiante modificado correctamente. \n");
                 return;
             }
         }
-
-        System.out.println("\n No se encontro un estudiante con la cédula ingresada.\n");
-
+        System.out.println("\n No se encontro un estudiante con la cedula ingresada. \n");
     }
 
     static void EliminarEstud() {
-
-        System.out.print("\n Ingrese la cedula del estudiante a eliminar: \n ");
-
+     
+        System.out.print("Ingrese la cedula del estudiante a eliminar: ");
         String cedula = sc.next();
 
         for (int i = 0; i < numEstudiantes; i++) {
@@ -144,53 +132,48 @@ public class ClasEstudiantes {
                     notaEstudiantes[j] = notaEstudiantes[j + 1];
                 }
                 numEstudiantes--;
-                System.out.println(" ");
                 System.out.println("\n Estudiante eliminado correctamente.\n");
-                System.out.println(" ");
                 return;
             }
         }
-
-        System.out.println(" ");
-        System.out.println("\n No se encontro un estudiante con la cedula ingresada.\n ");
-        System.out.println(" ");
+        System.out.println("\n No se encontro un estudiante con la cedula ingresada.\n");
     }
 
     static void reporteEstudiantesPorCondicion() {
         int opcion = 0;
         Scanner scanner = new Scanner(System.in);
         while (opcion != 4) {
-
-            System.out.println("\n *******Reporte Estudiantes por Condicion****** \n");
+            
+            System.out.println("\n*******Reporte Estudiantes por Condicion******\n");
             System.out.println("1. Aprobado(s)");
             System.out.println("2. Reprobado(s)");
             System.out.println("3. Aplazado(s)");
             System.out.println("4. Regresar al Sub-menu de reportes");
-            System.out.print("\nSeleccione una opcion:\n");
-
+            System.out.print("Seleccione una opcion: ");
+            
             // Validar entrada para que sea un número del 1 al 4
-            String input = scanner.nextLine();
-            while (!input.matches("[1-4]") || !Character.isDigit(input.charAt(0))) {
-                System.out.println("\n Opcion invalida.\n  \n Digite el numero de la opcion que desea \n");
-                input = scanner.nextLine();
-            }
+             String input = scanner.nextLine();
+        while (!input.matches("[1-4]") || !Character.isDigit(input.charAt(0))) {
+            System.out.println("La opcion marcada es invalida.");
+            input = scanner.nextLine();
+        }
             opcion = Integer.parseInt(input);
-
+            
             switch (opcion) {
 
                 case 1: // Aprobados
                     Est_aprobados();
-
+                  
                     break;
 
                 case 2: // Reprobados
                     Est_reprobados();
-
+                   
                     break;
 
                 case 3: // Aplazados
                     Est_aplazados();
-
+                    
                     break;
 
                 case 4:
@@ -198,95 +181,85 @@ public class ClasEstudiantes {
                     return;
 
                 default:
-
-                    System.out.println("\n Opcion invalida. \nDigite el numero de la opcion que desea");
-
+                    System.out.println("La opcion marcada es invalida.");
+            }
+        }scanner.close();
+    }
+    static void Est_aprobados(){
+    int numEstudiantesRegistrados = numEstudiantes;
+    boolean NohayEstu_Apro = false;
+        
+    if (numEstudiantesRegistrados > 0 ) {
+        System.out.println("Estudiantes Aprobados: ");
+        for (int i = 0; i < numEstudiantes; i++) {
+            if (notaEstudiantes[i] >= 70) {
+                System.out.println("Cedula: " + cedulaEstudiantes[i]
+                        + " Nombre: " + nombreEstudiantes[i]
+                        + " Apellido: " + apellidoEstudiantes[i]
+                        + " Nota: " + notaEstudiantes[i]);
+                NohayEstu_Apro  = true;
             }
         }
-        scanner.close();
-    }
-
-    static void Est_aprobados() {
-        int numEstudiantesRegistrados = numEstudiantes;
-        boolean NohayEstu_Apro = false;
-
-        if (numEstudiantesRegistrados > 0) {
-            System.out.println(" ");
-            System.out.println("Estudiantes Aprobados:");
-            for (int i = 0; i < numEstudiantes; i++) {
-                if (notaEstudiantes[i] >= 70) {
-                    System.out.println("Cedula: " + cedulaEstudiantes[i]
-                            + " Nombre: " + nombreEstudiantes[i]
-                            + " Apellido: " + apellidoEstudiantes[i]
-                            + " Nota: " + notaEstudiantes[i]);
-                    NohayEstu_Apro = true;
-                }
-            }
-            if (!NohayEstu_Apro) {
-                System.out.println("\n No hay estudiantes aprobados.");
-            }
-        } else {
-            System.out.println("\n No hay estudiantes registrados.");
+        if (!NohayEstu_Apro ) {
+            System.out.println("No hay estudiantes aprobados.\n");
         }
-    }
-
-    static void Est_reprobados() {
-        int numEstudiantesRegistrados = numEstudiantes;
-
-        if (numEstudiantesRegistrados > 0) {
-            System.out.println(" ");
-            System.out.println("Estudiantes Reprobados:");
-            boolean hayEstudiantesReprobados = false;
-            for (int i = 0; i < numEstudiantes; i++) {
-                if (notaEstudiantes[i] <= 59) {
-                    System.out.println("Cedula: " + cedulaEstudiantes[i]
-                            + " Nombre: " + nombreEstudiantes[i]
-                            + " Apellido: " + apellidoEstudiantes[i]
-                            + " Nota: " + notaEstudiantes[i]);
-                    hayEstudiantesReprobados = true;
-                }
+    } else {
+        System.out.println("\n No hay estudiantes registrados.");
+    } 
+}
+    static void Est_reprobados(){
+    int numEstudiantesRegistrados = numEstudiantes;
+        
+    if (numEstudiantesRegistrados > 0) {
+        System.out.println("Estudiantes Reprobados:");
+        boolean hayEstudiantesReprobados = false;
+        for (int i = 0; i < numEstudiantes; i++) {
+            if (notaEstudiantes[i] <= 59) {
+                System.out.println("Cedula: " + cedulaEstudiantes[i]
+                        + " Nombre: " + nombreEstudiantes[i]
+                        + " Apellido: " + apellidoEstudiantes[i]
+                        + " Nota: " + notaEstudiantes[i]);
+                hayEstudiantesReprobados = true;
             }
-            if (!hayEstudiantesReprobados) {
-                System.out.println("No hay estudiantes reprobados.");
-            }
-        } else {
-            System.out.println("\n No hay estudiantes registrados.\n");
+        }          
+        if (!hayEstudiantesReprobados) {
+            System.out.println("\n No hay estudiantes reprobados.");
         }
-    }
-
+    }else {
+        System.out.println("\n No hay estudiantes registrados.");
+    }  
+}
+    
     static void Est_aplazados() {
-        int numEstudiantesRegistrados = numEstudiantes;
-
-        if (numEstudiantesRegistrados > 0) {
-            System.out.println(" ");
-            System.out.println("Estudiantes Aplazados:");
-            boolean hayEstudiantesAplazados = false;
-            for (int i = 0; i < numEstudiantes; i++) {
-                if (notaEstudiantes[i] < 70 && notaEstudiantes[i] >= 60) {
-                    hayEstudiantesAplazados = true;
-                    System.out.println("Cedula: " + cedulaEstudiantes[i]
-                            + " Nombre: " + nombreEstudiantes[i]
-                            + " Apellido: " + apellidoEstudiantes[i]
-                            + " Nota: " + notaEstudiantes[i]);
-                }
+    int numEstudiantesRegistrados = numEstudiantes;
+    
+    if (numEstudiantesRegistrados > 0) {
+        System.out.println("Estudiantes Aplazados:");
+        boolean hayEstudiantesAplazados = false;
+        for (int i = 0; i < numEstudiantes; i++) {
+            if (notaEstudiantes[i] < 70 && notaEstudiantes[i] >= 60) {
+                hayEstudiantesAplazados = true;
+                System.out.println("Cedula: " + cedulaEstudiantes[i]
+                        + " Nombre: " + nombreEstudiantes[i]
+                        + " Apellido: " + apellidoEstudiantes[i]
+                        + " Nota: " + notaEstudiantes[i]);
             }
-            if (!hayEstudiantesAplazados) {
-                System.out.println("\nNo hay estudiantes aplazados.");
-            }
-        } else {
-            System.out.println("\nNo hay estudiantes registrados.");
         }
+        if (!hayEstudiantesAplazados) {
+            System.out.println("\n No hay estudiantes aplazados.");
+        }
+    } else {
+        System.out.println("\n No hay estudiantes registrados.");
     }
+}
 
     static void reporteTodosLosDatos() {
         System.out.println(" ");
         System.out.println(String.format("%50s", "REPORTE DE ESTUDIANTES"));
-        System.out
-                .println("==========================================================================================");
+        System.out.println("==========================================================================================");
         System.out.println(
-                String.format("%-8s %-24s %-24s %-16s %-16s", "Cedula", "Nombre", "Apellido", "Promedio", "Condicion"));
-        System.out
-                .println("==========================================================================================");
+        String.format("%-8s %-24s %-24s %-16s %-16s", "Cedula", "Nombre", "Apellido", "Promedio", "Condicion"));
+        System.out.println("==========================================================================================");
 
         double promedioMayor = 0;
         double promedioMenor = 0; // inicializamos con el primer promedio
@@ -324,17 +297,15 @@ public class ClasEstudiantes {
                 }
             }
 
-            System.out.println(
-                    "==========================================================================================");
+            System.out.println("==========================================================================================");
             System.out.println(" ");
-
             System.out.println("Nota Mayor: " + promedioMayor + " (estudiante: " + nombreEstudianteMayorPromedio + ")");
             System.out.println("Nota Menor: " + promedioMenor + " (estudiante: " + nombreEstudianteMenorPromedio + ")");
             System.out.println("Cantidad de estudiantes aprobados: " + numEstudiantesAprobados);
             System.out.println("Cantidad de estudiantes aplazados: " + numEstudiantesAplazados);
             System.out.println("Cantidad de estudiantes reprobados: " + numEstudiantesReprobados);
         } else {
-            System.out.println("No hay estudiantes registrados.");
+            System.out.println("\n No hay estudiantes registrados.");
         }
     }
-}
+}    
