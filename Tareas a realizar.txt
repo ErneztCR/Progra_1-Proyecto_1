@@ -1,22 +1,5 @@
-Bugs a reparar:
-
-* Opcion 3 del menu: Consultar estudiante
-fallo: muestra a todos los estudiantes.
-funcion esperada: Debe pedir la cedula del estudiante que se quiere consultar.
-
----------------------------------------------------------------------------------------------------------
-
-Mejoras del sistema:
+Mejoras para el sistema:
 
 * En la opcion 3 del menu: Consultar estudiante
 podria mostrar el estado del estudiante (aprobado, aplazado o reprobado).
-
-* Al modificar el estudiante se podria tambien incluir que modifique la cedula.
-
-* En el menu "Reporte Estudiantes por condicion" si no encuentra uno, podria indicar algo 
-como no hay estudiantes en esta condicion.
-
-* Permite usar el mismo numero de cedula, solo se deberia poder usar 1 vez o indicar que ya existe.
-
-* Correguir los saltos de linea. (\n)
 
