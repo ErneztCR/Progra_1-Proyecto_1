@@ -1,3 +1,4 @@
+
 package proyecto_1;
 
 import java.util.Scanner;
@@ -28,13 +29,13 @@ public class ClasMenuPrin {
             // Validar entrada para que sea un número del 1 al 7
             String input = scanner.nextLine();
 
-            while (!input.matches("[1-7]") || !Character.isDigit(input.charAt(0))) {
-                System.out.println("\nLa opcion: \"" + input + "\" es invalida.");
-                System.out.print("Seleccione una opcion valida del menu (numero): ");
-                input = scanner.nextLine();
-            }
-            opcion = Integer.parseInt(input);
-
+            while (!input.matches("[1-7]") || !Character.isDigit(input.charAt(0))) { // Este while se usa para validar que unicamente se ingresen numeros del 1 al 7                                                                             
+                System.out.println("\nLa opcion: \"" + input + "\" es invalida.");                 // se implementa en todos los submenus.
+                System.out.print("Seleccione una opcion valida del menu (numero): ");           //!input.matches[1-7]" se utiliza para verificar 
+                input = scanner.nextLine();                                                       //si la entrada del usuario es un número del 1 al 7.    
+            }                                                                                     //isDigit() se utiliza para verificar si el carácter es un dígito.  
+            opcion = Integer.parseInt(input);                                                         
+                                                                                                    
             switch (opcion) {
                 case 1:
                     ClasEstudiantes.inicializarVec();
