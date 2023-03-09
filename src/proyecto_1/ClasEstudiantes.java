@@ -118,7 +118,7 @@ public class ClasEstudiantes {
         do {
             System.out.print("\nIngrese la nota del estudiante: ");
             String entrada = sc.nextLine().trim();
-            if (entrada.matches("^\\d{1,2}(\\.\\d{1,2})?$")) { // if verifica que solo se digiten numeros.
+            if (entrada.matches("^\\d{1,3}(\\.\\d{1,2})?$")) { // if verifica que solo se digiten numeros.
                 nota = Double.parseDouble(entrada);
                 if (nota < 0 || nota > 100) {
                     System.out.println("\n\033[1mXxX Error: la nota debe estar entre 0 y 100. XxX\033[0m\n");
@@ -254,7 +254,7 @@ public class ClasEstudiantes {
 
                 String entrada = sc.nextLine().trim(); // elimina espacios en blanco antes y después de la entrada.
 
-                if (entrada.matches("^\\d{1,2}(\\.\\d{1,2})?$")) { // if valida que la entrada contenga solo dígitos y
+                if (entrada.matches("^\\d{1,3}(\\.\\d{1,2})?$")) { // if valida que la entrada contenga solo dígitos y
                                                                    // un punto decimal, con hasta dos dígitos después
                                                                    // del punto.
                     nota = Double.parseDouble(entrada);
